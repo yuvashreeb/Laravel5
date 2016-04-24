@@ -53,3 +53,8 @@ Route::group(array('before'=>'guest'),function(){
     ));
     
 });
+
+Route::get('/Counter',array(
+    'as'=>'Counter',
+    'uses'=>'counterController@count'
+));
