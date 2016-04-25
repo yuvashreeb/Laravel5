@@ -53,8 +53,32 @@ Route::group(array('before'=>'guest'),function(){
     ));
     
 });
-
+//hit counter
 Route::get('/Counter',array(
     'as'=>'Counter',
     'uses'=>'counterController@count'
+));
+//secure file upload
+Route::get('/secureupload','SecureController@index');
+Route::post('/secure',array(
+    'as'=>'secureupload',
+    'uses'=>'SecureController@uploadFile'
+));
+//multiplefile upload
+Route::get('/multipleupload','MultipleController@index');
+Route::post('/multiple',array(
+    'as'=>'multipleupload',
+    'uses'=>'MultipleController@multipleFile'
+));
+//currency convertor
+Route::get('/currencyconvertor','CurrencyController@index');
+Route::post('/currency',array(
+    'as'=>'currencyconvertor',
+    'uses'=>'CurrencyController@currencyConvertor'
+));
+//Autosuggestdropdown
+Route::get('/autosuggestdrop','AutoController@index');
+Route::post('/autosuggest',array(
+    'as'=>'autosuggestdrop',
+    'uses'=>'AutoController@autoSuggestDropDown'
 ));
