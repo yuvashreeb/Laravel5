@@ -82,3 +82,27 @@ Route::post('/autosuggest',array(
     'as'=>'autosuggestdrop',
     'uses'=>'AutoController@autoSuggestDropDown'
 ));
+//Find Replace
+Route::get('/findreplace','FindController@index');
+Route::post('/find',array(
+    'as'=>'findreplace',
+    'uses'=>'FindController@findReplace'
+));
+//Template engine
+Route::get('/templateengine','TemplateController@index');
+//translate pages
+Route::get('/translate',array(
+    'as'=>'index',
+    'uses'=>'TranslateController@index'
+));
+Route::get('/english',array(
+    'as'=>'english',
+    'uses'=>'TranslateController@english'
+));
+Route::get('/telugu',array(
+    'as'=>'telugu',
+    'uses'=>'TranslateController@telugu'
+));
+
+
+

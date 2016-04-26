@@ -17,7 +17,7 @@ class MultipleController extends BaseController {
     }
 
     public function multipleFile() {
-        $message="";
+        $Message="";
         $input = Input::file('upload');
         for ($x = 0; $x < count($input); $x++) {
             //echo $name;
