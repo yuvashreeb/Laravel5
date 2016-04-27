@@ -77,11 +77,11 @@ Route::post('/currency',array(
     'uses'=>'CurrencyController@currencyConvertor'
 ));
 //Autosuggestdropdown
-Route::get('/autosuggestdrop','AutoController@index');
-Route::post('/autosuggest',array(
-    'as'=>'autosuggestdrop',
-    'uses'=>'AutoController@autoSuggestDropDown'
+Route::get('/autosuggestdrop',array(
+    'as'=>'dropdown',
+    'uses'=>'AutoController@dropdown'
 ));
+Route::post('search','AutoController@search');
 //Find Replace
 Route::get('/findreplace','FindController@index');
 Route::post('/find',array(
@@ -103,6 +103,25 @@ Route::get('/telugu',array(
     'as'=>'telugu',
     'uses'=>'TranslateController@telugu'
 ));
+//atom feed
+Route::get('/reader',array(
+    'as'=>'reader',
+    'uses'=>'AtomController@reader'
+));
+//Route::get('/atomfunction',array(
+//   'as'=>'atom',
+//    'uses'=>'AtomController@atom'
+//));
+//photoalbum
+Route::get('/photoalbum',array(
+    'as'=>'photoalbum',
+    'uses'=>'AlbumController@photoAlbum'
+));
+Route::get('/photoalbum-album{folder}',array(
+    'as'=>'folder',
+    'uses'=>'AlbumController@folder'
+));
+
 
 
 
