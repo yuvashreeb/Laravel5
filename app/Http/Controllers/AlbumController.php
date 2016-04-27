@@ -13,40 +13,40 @@ use Illuminate\Support\Facades\File;
 class AlbumController extends BaseController {
 
     public function photoAlbum() {
-        $page = $_SERVER['PHP_SELF'];
-        $column = 2;
-        $base = "data";
-        $thumbs = "thumbs";
-        @$get_album = $_GET['album'];
-        if (!$get_album) {
-            $choice = "Select an Album";
-            $handle = File::directories($base);
+        $Page = $_SERVER['PHP_SELF'];
+        $Column = 2;
+        $Base = "data";
+        $Thumbs = "thumbs";
+        @$Get_album = $_GET['album'];
+        if (!$Get_album) {
+            $Choice = "Select an Album";
+            $Handle = File::directories($Base);
             // print_r($handle);
-            foreach ($handle as $file) {
-                if ($file != 'data/thumbs') {
-                    $file = substr($file, "5");
+            foreach ($Handle as $File) {
+                if ($File != 'data/thumbs') {
+                    $File = substr($File, "5");
 
                     // echo $file;
-                    $folder[] = $file;
+                    $Folder[] = $File;
                 }
             }
         } else {
 
-            if (!File::isDirectory($base . "/" . $get_album) || (strstr($get_album, ".") != NULL) || (strstr($get_album, "/") != NULL) || (strstr($get_album, "\\") != NULL)) {
+            if (!File::isDirectory($base . "/" . $Get_album) || (strstr($Get_album, ".") != NULL) || (strstr($Get_album, "/") != NULL) || (strstr($Get_album, "\\") != NULL)) {
                 echo "album doesnot exist<br/>";
             }
         }
 
-        return View('/layouts/album', ['Photoalbum_folder' => $folder, "choice" => $choice]);
+        return View('/layouts/album', ['Photoalbum_folder' => $Folder, "Choice" => $Choice]);
     }
 
-    public function folder($folder) {
+    public function folder($Folder) {
 
-        $path = 'data/' . $folder;
+        $Path = 'data/' . $Folder;
         //echo $path;
-        $file = File::Files($path);
+        $File = File::Files($Path);
 //print_r($file);
-        return View('/layouts/album', ['Photoalbum_image' => $file]);
+        return View('/layouts/album', ['Photoalbum_image' => $File]);
     }
 
 }

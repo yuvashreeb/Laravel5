@@ -12,14 +12,14 @@
         <tr>
             <td>
                 @if(isset($Photoalbum_folder))
-                <b>{{$choice}}</b><br/>
-                @foreach($Photoalbum_folder as $folder)
-                <a href="{{URL::route('folder',["folder"=>$folder])}}">{{$folder}}</a> <br/>
+                <b>{{$Choice}}</b><br/>
+                @foreach($Photoalbum_folder as $Folder)
+                <a href="{{URL::route('folder',["folder"=>$Folder])}}">{{$Folder}}</a> <br/>
                 @endforeach
                 @endif
                 @if(isset($Photoalbum_image))
-                @foreach($Photoalbum_image as $folder)
-                <a href="{{$folder}}" data-lightbox='nondatabasealbum'><img src="{{$folder}}" width="100" height="100"/></a>
+                @foreach($Photoalbum_image as $Folder)
+                <a href="{{$Folder}}" data-lightbox='nondatabasealbum'><img src="{{$Folder}}" width="100" height="100"/></a>
                 @endforeach
                 <br><a href='{{URL::route('photoalbum')}}' >Back to album </a>
                 @endif
