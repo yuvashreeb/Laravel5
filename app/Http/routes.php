@@ -121,6 +121,18 @@ Route::get('/photoalbum-album{folder}',array(
     'as'=>'folder',
     'uses'=>'AlbumController@folder'
 ));
+//guestbook
+Route::get('/guestbook','GuestController@index');
+Route::post('/guestbookpost',array(
+    'as'=>'upload',
+    'uses'=>'GuestController@upload'
+));
+//spellchecker
+Route::get('/spellchecker','SpellController@index');
+Route::post('/spellcheckerpost',array(
+    'as'=>'check',
+    'uses'=>'SpellController@check'
+));
 
 
 
