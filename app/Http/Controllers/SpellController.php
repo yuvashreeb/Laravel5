@@ -21,14 +21,28 @@ class SpellController extends BaseController {
             $Word=$Word['word'];
             //echo $Word;
             $Spellcheck=new SpellController();
-            $Spellcheck->spellcheck($Word);
+            $Output=$Spellcheck->spellcheck($Word);
+//            print_r($Output);
+            return View('/layouts/spell',['Words'=>$Output]);
         }
     }
     public function spellcheck($Word){
         $Subword=substr($Word, 0, 1);
 //        echo $Subword;
-        $users = DB::table('English')->select('Word')->where(DB::raw ('left(Word,1)',$Subword))->get();
-        print_r($users);
+        $User = DB::table('English')->select('Word')->where('Word','like',$Subword.'%')->get();
+//        $WordExists=DB::table('English')->select(count('Word'))->where('Word','<>',$Word);
+//        print_r($WordExists);
+        foreach($User as $Array){
+            foreach($Array as $x=>$value){
+                if($x=='Word'){
+                    similar_text($Word, $value,$percent);
+                    if($percent>80){
+                        $Result[]=$value;
+                    }
+                }
+            }
+        }
+        return(empty($Result)?false:$Result);
     }
 
 

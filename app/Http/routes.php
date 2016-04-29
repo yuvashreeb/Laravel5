@@ -133,7 +133,14 @@ Route::post('/spellcheckerpost',array(
     'as'=>'check',
     'uses'=>'SpellController@check'
 ));
-
+//Chat app
+Route::get('/chatbox','ChatController@index');
+//Route::post('/chatboxpost',array(
+//   'as'=>'chatbox',
+//    'uses'=>'ChatController@chatbox'
+//));
+//Rating system
+Route::get('/Rating','RatingController@index');
 
 
 
