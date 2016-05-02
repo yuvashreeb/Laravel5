@@ -141,6 +141,14 @@ Route::get('/chatbox','ChatController@index');
 //));
 //Rating system
 Route::get('/Rating','RatingController@index');
+//OOPS
+Route::get('/oops','MethodController@index');
+Route::get('/calculator','CalculatorController@index');
+Route::get('/constructor','ConstructorController@index');
+Route::get('/protected','ProtectedController@index');
+Route::get('/inheritence','InheritController@index');
+Route::get('/scope','scopeController@index');
+
 
 
 
