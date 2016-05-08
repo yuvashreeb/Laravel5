@@ -258,7 +258,44 @@ Route::get("editalbum/{name}", array(
 ));
 Route::post("imageupload/editalbum", array(
     'as' => "editalbumname",
-    'uses' => "imageController@editalbumname"));
+    'uses' => "imageController@editalbumname"
+));
+//mini shopping cart
+
+Route::get('minishoppingcart', array(
+    'as' => 'minishoppingcart',
+    'uses' => 'likebuttonController@shoppingcart'
+));
+Route::post('addtocart', array(
+    'as' => 'addtocart',
+    'uses' => 'likebuttonController@addcart'
+));
+Route::post('checkcart', 'likebuttonController@checkcart');
+Route::post('checkout', array(
+    'as' => 'checkout',
+    'uses' => 'likebuttonController@checkout'
+));
+Route::get('incrementproduct/{id}', array(
+    'as' => 'incrementproduct',
+    'uses' => 'likebuttonController@addproduct'
+));
+
+Route::get('decrementproduct/{id}', array(
+    'as' => 'decrementproduct',
+    'uses' => 'likebuttonController@deductproduct'
+));
+Route::get('deleteproduct/{id}', array(
+    'as' => 'deleteproduct',
+    'uses' => 'likebuttonController@deleteproduct'
+));
+Route::post('payment', array(
+    'as' => 'payment',
+    'uses' => 'likebuttonController@payment'
+));
+Route::post('paid', array(
+    'as' => 'paid',
+    'uses' => 'likebuttonController@paid'
+));
 
 
 
