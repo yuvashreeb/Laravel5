@@ -296,6 +296,14 @@ Route::post('paid', array(
     'as' => 'paid',
     'uses' => 'likebuttonController@paid'
 ));
+//string
+Route::get('stringfunctions', 'StringController@string');
+//watermark
+Route::get('water', 'WatermarkController@index');
+Route::post('watermark', array(
+    'as' => 'Secureupload',
+    'uses' => 'WatermarkController@uploadFile'
+));
 
 
 

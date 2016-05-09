@@ -22,27 +22,7 @@ class likebuttonController extends Controller {
         DispatchesJobs,
         ValidatesRequests;
 
-    public function likebutton($name) {
 
-        $article = DB::table('likes')->get();
-        $user = DB::table('userlikes')->where('name', $name)->get();
-        if (!$user) {
-            DB::table('userlikes')->insert(['name' => $name]);
-            $user = DB::table('userlikes')->where('name', $name)->get();
-            $userarray = json_decode(json_encode($user), true);
-        } else {
-
-            $userarray = json_decode(json_encode($user), true);
-        }
-
-        $articlearray = json_decode(json_encode($article), true);
-
-        return view('likebutton/like', ['article' => $articlearray, 'user' => $userarray, 'name' => $name]);
-    }
-
-    public function like() {
-        
-    }
 
     public function shoppingcart() {
 
@@ -89,11 +69,14 @@ class likebuttonController extends Controller {
     }
     
     public function deductproduct($id){
-        
-            DB::table('Tempcart')->where('productid','=',$id)->decrement('quantity');
-            $obj=new likebuttonController();
-            return $obj->checkout();
-    }
+      $product=  DB::table('Tempcart')->where('productid','=',$id)->get();
+            $product = json_decode(json_encode($product), true);
+            if($product[0]['quantity']>1){
+       
+            DB::table('Tempcart')->where('productid','=',$id)->decrement('quantity');}
+           $obj=new likebuttonController();
+           return $obj->checkout();
+   }
 
     public function deleteproduct($id){
         
